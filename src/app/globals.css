@@ -2,52 +2,47 @@
 
 @font-face {
   font-family: 'Inter thin';
-  src: url('/public/fontes/INTER-THIN.ttf');
+  src: url('/fontes/INTER-THIN.ttf');
 }
 
 @font-face {
   font-family: 'Inter Semibold';
-  src: url('/public/fontes/INTER-SEMIBOLD.ttf');
+  src: url('/fontes/INTER-SEMIBOLD.ttf');
 }
 
 @font-face {
   font-family: 'Inter Regular';
-  src: url('/public/fontes/INTER-REGULAR.ttf');
+  src: url('/fontes/INTER-REGULAR.ttf');
 }
 
 @font-face {
   font-family: 'Inter Medium';
-  src: url('/public/fontes/INTER-MEDIUM.ttf');
+  src: url('/fontes/INTER-MEDIUM.ttf');
 }
 
 @font-face {
   font-family: 'Inter Light';
-  src: url('/public/fontes/INTER-LIGHT.ttf');
+  src: url('/fontes/INTER-LIGHT.ttf');
 }
 
 @font-face {
   font-family: 'Inter Extralight';
-  src: url('/public/fontes/INTER-EXTRALIGHT.ttf');
+  src: url('/fontes/INTER-EXTRALIGHT.ttf');
 }
 
 @font-face {
   font-family: 'Inter Extrabold';
-  src: url('/public/fontes/INTER-EXTRABOLD.ttf');
+  src: url('/fontes/INTER-EXTRABOLD.ttf');
 }
 
 @font-face {
   font-family: 'Inter Bold';
-  src: url('/public/fontes/INTER-BOLD.ttf');
+  src: url('/fontes/INTER-BOLD.ttf');
 }
 
 @font-face {
   font-family: 'Inter Black';
-  src: url('/public/fontes/INTER-BLACK.ttf');
-}
-
-@font-face {
-  font-family: 'DM Sans Black';
-  src: url('/public/fontes/DM-SANS-BLACK.ttf');
+  src: url('/fontes/INTER-BLACK.ttf');
 }
 
 @theme {
