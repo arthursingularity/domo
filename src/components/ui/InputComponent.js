@@ -5,7 +5,7 @@ export default function InputComponent({ type, placeholder, className }) {
                 type={type}
                 placeholder={placeholder}
                 className={`
-                font-regular
+                font-light
                 rounded-full
                 py-2 px-4
                 text-[16px]
@@ -14,7 +14,7 @@ export default function InputComponent({ type, placeholder, className }) {
                 bg-lightGray
                 text-textPrimary
 
-                placeholder:font-regular
+                placeholder:font-light
                 placeholder:text-[15px]
                 placeholder:text-textSecondary
                 placeholder:opacity-70
