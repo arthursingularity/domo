@@ -86,6 +86,7 @@ body {
         Uso: botões primários, header, navbar, CTAs principais,
         ícones ativos e elementos de destaque */
      --color-primary: #06C755;
+     --color-blackBg: #1D211E;
    
     /* Verde muito suave
         Uso: background de cards, seções internas,
@@ -104,6 +105,7 @@ body {
         separadores visuais e outlines neutros */
      --color-border: #CBD5E1;
      --color-lightGray: #E7E9EB;
+     --color-lightGray2: #EEF0F3;
 
     /* Background geral do sistema
         Uso: fundo padrão das páginas,

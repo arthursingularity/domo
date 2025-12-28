@@ -1,4 +1,4 @@
-import Button from "../ui/Button";
+import ButtonComponent from "../ui/ButtonComponent";
 
 export default function NavBar() {
     return (
@@ -9,12 +9,12 @@ export default function NavBar() {
                 className="w-[100px] md:ml-[360px] ml-4 buttonHover"
             />
             <div className="mr-4 space-x-2">
-                <Button
-                    text={"Entrar"}
+                <ButtonComponent
+                    content={"Entrar"}
                     type={"secondary"}
                 />
-                <Button
-                    text={"Cadastrar"}
+                <ButtonComponent
+                    content={"Cadastrar"}
                     type={"primary"}
                 />
             </div>
