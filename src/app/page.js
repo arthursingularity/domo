@@ -16,11 +16,11 @@ export default function Home() {
         <div className="md:mt-14 mt-2 flex md:w-[1200px] p-4">
           <div className="bg-primarySoft w-[500px] h-[500px] hidden md:block">
           </div>
-          <div className="md:pl-10 space-y-5">
+          <div className="md:pl-10 space-y-3">
             <TextComponent type={"h1"} content={"Profissionais certos, na hora certa."} className={"text-left text-[48px]"} />
             <TextComponent type={"h2"} content={"Uma plataforma para contratar profissionais com confiança."} className={"text-left"} />
             <TextComponent type={"h3"} content={"Serviços, eventos, tecnologia, manutenção e muitos mais."} className={"text-left"} />
-            <div className="">
+            <div className="mt-5">
               <div
                 onClick={() => setWidthExpanded(true)}
                 onTransitionEnd={(e) => {
@@ -80,7 +80,7 @@ export default function Home() {
           <div>
             <img
               className="w-[180px]"
-              src="/imagens/card.png"
+              src="/imagens/card2.png"
             />
           </div>
         </div>

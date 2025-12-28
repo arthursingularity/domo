@@ -96,10 +96,6 @@ body {
         Uso: títulos, headings, textos principais,
         labels importantes e conteúdo prioritário */
      --color-textPrimary: #0F172A;
-   
-    /* Texto secundário
-        Uso: descrições, subtítulos, placeholders,
-        textos de apoio e informações menos importantes */
      --color-textSecondary: #3C4D65;
      --color-textTertiary: #64748B;
    
