@@ -6,7 +6,7 @@ export default function NavBar() {
             <img
                 src="/imagens/logoVerde.png"
                 alt="Logo Domo"
-                className="w-[100px] ml-4 buttonHover"
+                className="w-[100px] md:ml-[360px] ml-4 buttonHover"
             />
             <div className="mr-4 space-x-2">
                 <Button

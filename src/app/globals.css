@@ -60,12 +60,7 @@
     /* Cor principal da marca DOMO
         Uso: botões primários, header, navbar, CTAs principais,
         ícones ativos e elementos de destaque */
-     --color-primary: #34C563;
-
-    /* Variação clara da cor principal
-        Uso: hover de botões primários, estados ativos,
-        links destacados e microinterações */
-     --color-primaryLight: #51DD7E;
+     --color-primary: #06C755;
    
     /* Verde muito suave
         Uso: background de cards, seções internas,
@@ -80,13 +75,15 @@
     /* Texto secundário
         Uso: descrições, subtítulos, placeholders,
         textos de apoio e informações menos importantes */
-     --color-textSecondary: #334155;
+     --color-textSecondary: #3C4D65;
+     --color-textTertiary: #64748B;
    
     /* Cor de bordas e divisores
         Uso: bordas de cards, inputs, tabelas,
         separadores visuais e outlines neutros */
      --color-border: #CBD5E1;
-   
+     --color-lightGray: #E7E9EB;
+
     /* Background geral do sistema
         Uso: fundo padrão das páginas,
         áreas externas de cards e layout base */
@@ -111,6 +108,8 @@
         Uso: dicas, mensagens neutras,
         indicadores informativos e ajuda ao usuário */
      --color-info: #3B82F6;
+
+     --color-buttonSecondary: #D9E3EE;
 }
 
 .buttonHover:hover {
