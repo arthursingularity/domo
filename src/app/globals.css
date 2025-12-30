@@ -96,9 +96,13 @@ body {
     /* Texto principal
         Uso: títulos, headings, textos principais,
         labels importantes e conteúdo prioritário */
-     --color-textPrimary: #0F172A;
-     --color-textSecondary: #3C4D65;
-     --color-textTertiary: #64748B;
+      --color-textPrimary: #0F172A;
+      --color-textSecondary: #3C4D65;
+      --color-textTertiary: #64748B;
+
+      --color-textPrimaryDark: #F8FAFC;   /* quase branco, confortável */
+      --color-textSecondaryDark: #CBD5E1; /* cinza claro, leitura fluida */
+      --color-textTertiaryDark: #94A3B8;
    
     /* Cor de bordas e divisores
         Uso: bordas de cards, inputs, tabelas,
@@ -138,4 +142,14 @@ body {
 .buttonHover:hover {
   filter: brightness(90%);
   cursor: pointer;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
 }

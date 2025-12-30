@@ -6,17 +6,14 @@ export default function NavBar() {
             <img
                 src="/imagens/logoVerde.png"
                 alt="Logo Domo"
-                className="w-[100px] md:ml-[360px] ml-4 buttonHover"
+                className="w-[80px] md:ml-[335px] ml-5 buttonHover"
             />
-            <div className="mr-4 space-x-2">
+            <div className="mr-4 space-x-4 flex">
                 <ButtonComponent
-                    content={"Entrar"}
-                    type={"secondary"}
-                />
-                <ButtonComponent
-                    content={"Cadastrar"}
+                    content={"Começar"}
                     type={"primary"}
                 />
+                <img src="/imagens/menuIcon.svg" className="w-[35px]"/>
             </div>
         </div>
     )

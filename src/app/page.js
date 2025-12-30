@@ -11,16 +11,15 @@ export default function Home() {
   const [showInputs, setShowInputs] = useState(false);
 
   return (
-    <div className="flex justify-center">
-      <div className="text-center">
-        <div className="heroSection md:mt-14 mt-2 flex md:w-[1200px] p-4">
-          <div className="bg-primarySoft w-[545px] h-[545px] hidden md:block">
+    <div>
+      <div className="flex justify-center">
+        <div className="heroSection md:mt-10 flex p-7">
+          <div className="bg-primarySoft w-[525px] h-[525px] hidden md:block">
           </div>
-          <div className="md:pl-10 space-y-3">
+          <div className="md:pl-10 space-y-3 md:w-[700px]">
             <TextComponent type={"h1"} content={"Profissionais certos, na hora certa."} className={"text-left text-[48px]"} />
-            <TextComponent type={"h2"} content={"Uma plataforma para contratar profissionais com confiança."} className={"text-left"} />
-            <TextComponent type={"h3"} content={"Serviços, eventos, tecnologia, manutenção e muitos mais."} className={"text-left"} />
-            <div className="mt-5">
+            <TextComponent type={"body"} content={"Encontre e contrate profissionais de diversas categorias em uma plataforma segura e confiável."} className={"text-left"} />
+            <div className="inputsDiv mt-5">
               <div
                 onClick={() => setWidthExpanded(true)}
                 onTransitionEnd={(e) => {
@@ -37,15 +36,15 @@ export default function Home() {
                   }
                 }}
                 className={`bg-primary text-white font-semibold text-[15px] p-2 space-y-3 transition-all ease-in-out duration-300 rounded-[41px]
-              ${widthExpanded ? "md:w-[400px] w-full" : "w-[270px] buttonHover"}
-              ${heightExpanded ? "h-[350px]" : "h-[50px]"}
-            `}
+                            ${widthExpanded ? "md:w-[400px] w-full" : "w-[280px] buttonHover"}
+                            ${heightExpanded ? "h-[283px]" : "h-[50px]"}
+                          `}
               >
-                <p className="transition-opacity duration-200 mt-[6px]">
+                <p className="transition-opacity duration-200 mt-[6px] text-center">
                   {widthExpanded ? "O que você precisa?" : "Encontrar profissional"}
                 </p>
                 {showInputs && (
-                  <div className={`divDosInputs bg-background p-3 rounded-[33px]`}>
+                  <div className={`bg-background p-3 rounded-[33px]`}>
                     <div className="space-y-3">
                       <InputComponent type={"text"} placeholder={"Profissional"} />
                       <InputComponent type={"text"} placeholder={"Cidade"} />
@@ -66,116 +65,142 @@ export default function Home() {
                         <ButtonComponent type={"primary"} content={"Pesquisar"} />
                       </div>
                     </div>
-                    <hr className="border-border mt-3" />
-                    <TextComponent type={"body"} content={"Profissionais verificados, avaliações reais e pagamento seguro"} className={"mt-2"} />
                   </div>
                 )}
               </div>
             </div>
           </div>
         </div>
-        <div className="profissionalCards bg-blackBg w-full p-4 md:hidden space-y-4 mt-4">
-          <TextComponent type={"h15"} content={"Os melhores perto de você"} className={"text-white"}/>
-          <div className="flex justify-center space-x-4">
-            <div>
-              <img
-                className="w-[180px]"
-                src="/imagens/card.png"
-              />
-            </div>
-            <div>
-              <img
-                className="w-[180px]"
-                src="/imagens/card2.png"
-              />
-            </div>
+      </div>
+      <div className="profissionalCards bg-lightGray2 w-full p-7 md:hidden space-y-3">
+        <div className="flex justify-center space-x-3">
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
+              src="/imagens/card.png"
+            />
+          </div>
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
+              src="/imagens/card2.png"
+            />
+          </div>
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
+              src="/imagens/card2.png"
+            />
           </div>
         </div>
-        <div className="comoFunciona p-4">
-          <TextComponent type={"h15"} content={"Como a Domo funciona"} />
+        <div className="flex justify-center space-x-3">
           <div>
-            <TextComponent type={"h2"} content={"Passo 1"} />
-            <TextComponent type={"h3"} content={"Encontre o profissional ideal"} />
+            <img
+              className="w-[190px] drop-shadow-md"
+              src="/imagens/card.png"
+            />
+          </div>
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
+              src="/imagens/card2.png"
+            />
+          </div>
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
+              src="/imagens/card2.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="comoFunciona p-7 text-left w-full space-y-7">
+        <TextComponent type={"sectionTitle"} content={"Entenda como a Domo funciona"} />
+        <div className="bg-lightGray2 border-border border rounded-[33px] max-w-[430px] h-[180px] flex justify-between overflow-hidden">
+          <div className="space-y-3 pt-5 pl-5">
+            <TextComponent type={"h3"} content={"1 - Preencha as informações"} />
             <TextComponent type={"body"} content={"Busque por serviço, cidade e disponibilidade."} />
           </div>
-          <div>
-            <TextComponent type={"h2"} content={"Passo 2"} />
-            <TextComponent type={"h3"} content={"Combine com segurança"} />
-            <TextComponent type={"body"} content={"Todas as informações ficam registradas na plataforma."} />
-          </div>
-          <div>
-            <TextComponent type={"h2"} content={"Passo 3"} />
-            <TextComponent type={"h3"} content={"Serviço concluído, pagamento liberado"} />
-            <TextComponent type={"body"} content={"Mais segurança para clientes e profissionais."} />
-          </div>
-          <ButtonComponent type={"primary"} content={"Começar agora"} />
+          <img src="/imagens/pass1.png" className="object-contain pt-5 pr-4 pl-2" />
         </div>
-        <div className="diferenciais p-4 bg-lightGray2">
-          <TextComponent type={"h15"} content={"Nossos diferenciais"} />
-          <TextComponent type={"h2"} content={"Por que escolher a Domo?"} />
-          <div>
-            <TextComponent type={"h3"} content={"Profissionais verificados"} />
-            <TextComponent type={"body"} content={"Identidade validada para mais segurança na contratação."} />
+        <div className="bg-lightGray2 border-border border rounded-[33px] max-w-[430px] h-[180px] flex justify-between overflow-hidden">
+          <div className="space-y-3 pt-5 pl-5">
+            <TextComponent type={"h3"} content={"2 - Seleção"} />
+            <TextComponent type={"body"} content={"Escolha o profissional que melhor atenda à sua necessidade."} />
           </div>
-          <div>
-            <TextComponent type={"h3"} content={"Avaliações reais"} />
-            <TextComponent type={"body"} content={"Apenas clientes que contrataram podem avaliar."} />
-          </div>
-          <div>
-            <TextComponent type={"h3"} content={"Pagamento liberado"} />
-            <TextComponent type={"body"} content={"O pagamento é diretamente entre você e o profissional."} />
-          </div>
-          <div>
-            <TextComponent type={"h3"} content={"Diagnóstico justo"} />
-            <TextComponent type={"body"} content={"Ideal para serviços técnicos onde o problema não é claro."} />
-          </div>
+          <img src="/imagens/pass1.png" className="object-contain pt-5 pr-4 pl-2" />
         </div>
-        <div className="trabalheConosco p-4 bg-blackBg">
-          <TextComponent type={"h15"} content={"Você é profissional? Trabalhe conosco!"} className={"text-white"}/>
-          <TextComponent type={"h2"} content={"Encontre novos clientes, ganhe visibilidade e trabalhe com mais segurança."} className={"text-white"}/>
-          <div>
-            <TextComponent type={"h2"} content={"Benefícios"} className={"text-white"}/>
-            <TextComponent type={"h3"} content={"Perfil verificado gera mais confiança"} className={"text-white"}/>
-            <TextComponent type={"h3"} content={"Avaliações ajudam a conquistar novos clientes"} className={"text-white"}/>
-            <TextComponent type={"h3"} content={"Atenda residências, empresas e eventos"} className={"text-white"}/>
-            <ButtonComponent type={"primary"} content={"Cadastrar como profissional"} className={"text-white"}/>
+        <div className="bg-lightGray2 border-border border rounded-[33px] max-w-[430px] h-[180px] flex justify-between overflow-hidden">
+          <div className="space-y-3 pt-5 pl-5">
+            <TextComponent type={"h3"} content={"3 - Finalização"} />
+            <TextComponent type={"body"} content={"O pagamento é feito diretamente ao profissional após o serviço."} />
           </div>
+          <img src="/imagens/pass1.png" className="object-contain pt-5 pr-4 pl-2" />
         </div>
-        <div className="indique p-4 bg-lightGray2">
-          <TextComponent type={"h15"} content={"Conhece um bom profissional?"} />
-          <TextComponent type={"h2"} content={"Indique alguém de confiança e ajude a comunidade a crescer!"} />
-          <ButtonComponent type={"primary"} content={"Indicar profissional"} />
+        <div className="flex justify-center">
+          <ButtonComponent type={"primary"} content={"Começar agora"} className={""} />
         </div>
-        <div className="perguntas p-4 space-y-3 text-left">
-          <TextComponent type={"h15"} content={"Perguntas"} className={"text-center"}/>
-          <div>
-            <TextComponent type={"h3"} content={"A Domo é segura?"} />
-            <TextComponent type={"body"} content={"Sim. Trabalhamos com profissionais qualificados, avaliações reais e pagamento protegido."} />
-          </div>
-          <div>
-            <TextComponent type={"h3"} content={"Os profissionais são verificados?"} />
-            <TextComponent type={"body"} content={"Sim. Os profissionais passam por um processo de verificação para aumentar a segurança."} />
-          </div>
-          <div>
-            <TextComponent type={"h3"} content={"Como funciona o pagamento?"} />
-            <TextComponent type={"body"} content={"O pagamento funciona diretamente entre o cliente e o profissional, sem qualquer interferência da plataforma."} />
-          </div>
-          <div>
-            <TextComponent type={"h3"} content={"Tenha uma empresa, posso contratar mesmo assim?"} />
-            <TextComponent type={"body"} content={"Sim. A Domo possui profissionais que atendem residências, empresas e eventos."} />
-          </div>
-          <div>
-            <TextComponent type={"h3"} content={"E se eu não gostar do serviço?"} />
-            <TextComponent type={"body"} content={"Você pode avaliar o profissional ou entrar em contato com o nosso suporte."} />
-          </div>
-        </div>
-        <footer>
-          <TextComponent type={"body"} content={"Domo © 2025"} />
-          <TextComponent type={"body"} content={"Termos de Uso"} />
-          <TextComponent type={"body"} content={"Política de Privacidade"} />
-          <TextComponent type={"body"} content={"Contato"} />
-        </footer>
       </div>
+      <div className="diferenciais p-7 bg-lightGray2 w-full space-y-5">
+        <TextComponent type={"h3"} content={"Nossos diferenciais"} className={"text-primary"} />
+        <TextComponent type={"sectionTitle"} content={"Por que escolher a Domo?"} />
+        <div>
+          <TextComponent type={"h3"} content={"Profissionais verificados"} />
+          <TextComponent type={"body"} content={"Identidade validada para mais segurança na contratação."} />
+        </div>
+        <div>
+          <TextComponent type={"h3"} content={"Avaliações reais"} />
+          <TextComponent type={"body"} content={"Apenas clientes que contrataram podem avaliar."} />
+        </div>
+        <div>
+          <TextComponent type={"h3"} content={"Pagamento liberado"} />
+          <TextComponent type={"body"} content={"O pagamento é diretamente entre você e o profissional."} />
+        </div>
+        <div>
+          <TextComponent type={"h3"} content={"Diagnóstico justo"} />
+          <TextComponent type={"body"} content={"Ideal para serviços técnicos onde o problema não é claro."} />
+        </div>
+      </div>
+      <div className="trabalheConosco p-7 bg-blackBg w-full">
+        <TextComponent type={"sectionTitle"} content={"Você é um profissional autônomo ou possui um negócio? Trabalhe conosco!"} className={"text-white"} />
+        <TextComponent type={"h3"} content={"Encontre novos clientes, ganhe visibilidade e trabalhe com mais segurança."} className={"text-textSecondaryDark mt-3"} />
+        <ButtonComponent type={"primary"} content={"Entenda melhor"} className={"mt-7"} />
+      </div>
+      <div className="indique p-7 w-full space-y-5">
+        <TextComponent type={"h3"} content={"Conhece um bom profissional?"} className={"text-primary"} />
+        <TextComponent type={"sectionTitle"} content={"Indique alguém de confiança e ajude a comunidade a crescer!"} />
+        <TextComponent type={"body"} content={"Ao indicar um profissional para a nossa plataforma, você ajuda"} />
+        <ButtonComponent type={"primary"} content={"Indicar profissional"} />
+      </div>
+      <div className="perguntas p-7 bg-lightGray2 space-y-5 text-left w-full">
+        <TextComponent type={"h2"} content={"Perguntas"}/>
+        <div>
+          <TextComponent type={"h3"} content={"A Domo é segura?"} />
+          <TextComponent type={"body"} content={"Sim. Trabalhamos com profissionais qualificados, avaliações reais e pagamento protegido."} />
+        </div>
+        <div>
+          <TextComponent type={"h3"} content={"Os profissionais são verificados?"} />
+          <TextComponent type={"body"} content={"Sim. Os profissionais passam por um processo de verificação para aumentar a segurança."} />
+        </div>
+        <div>
+          <TextComponent type={"h3"} content={"Como funciona o pagamento?"} />
+          <TextComponent type={"body"} content={"O pagamento funciona diretamente entre o cliente e o profissional, sem qualquer interferência da plataforma."} />
+        </div>
+        <div>
+          <TextComponent type={"h3"} content={"Tenha uma empresa, posso contratar mesmo assim?"} />
+          <TextComponent type={"body"} content={"Sim. A Domo possui profissionais que atendem residências, empresas e eventos."} />
+        </div>
+        <div>
+          <TextComponent type={"h3"} content={"E se eu não gostar do serviço?"} />
+          <TextComponent type={"body"} content={"Você pode avaliar o profissional ou entrar em contato com o nosso suporte."} />
+        </div>
+      </div>
+      <footer>
+        <TextComponent type={"body"} content={"Domo © 2025"} />
+        <TextComponent type={"body"} content={"Termos de Uso"} />
+        <TextComponent type={"body"} content={"Política de Privacidade"} />
+        <TextComponent type={"body"} content={"Contato"} />
+      </footer>
     </div>
   );
 }

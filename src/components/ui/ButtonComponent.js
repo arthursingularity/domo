@@ -1,4 +1,4 @@
-export default function ButtonComponent({ type, content }) {
+export default function ButtonComponent({ type, content, className }) {
     const buttonVariants = {
         primary: "bg-primary text-white",
         secondary: "bg-buttonSecondary text-textPrimary",
@@ -6,7 +6,7 @@ export default function ButtonComponent({ type, content }) {
 
     return (
         <button
-            className={`font-semibold px-5 py-3 rounded-full buttonHover text-[15px] ${buttonVariants[type]}`}
+            className={`${className} font-semibold px-6 py-3 rounded-full buttonHover text-[15px] ${buttonVariants[type]}`}
         >
             {content}
         </button>
