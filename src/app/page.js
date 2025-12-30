@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import ButtonComponent from "@/components/ui/ButtonComponent";
 import InputComponent from "@/components/ui/InputComponent";
 import TextComponent from "@/components/ui/TextComponent";
@@ -77,19 +78,19 @@ export default function Home() {
           <div>
             <img
               className="w-[190px] drop-shadow-md"
+              src="/imagens/card3.png"
+            />
+          </div>
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
+              src="/imagens/card5.png"
+            />
+          </div>
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
               src="/imagens/card.png"
-            />
-          </div>
-          <div>
-            <img
-              className="w-[190px] drop-shadow-md"
-              src="/imagens/card2.png"
-            />
-          </div>
-          <div>
-            <img
-              className="w-[190px] drop-shadow-md"
-              src="/imagens/card2.png"
             />
           </div>
         </div>
@@ -97,48 +98,81 @@ export default function Home() {
           <div>
             <img
               className="w-[190px] drop-shadow-md"
+              src="/imagens/card4.png"
+            />
+          </div>
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
+              src="/imagens/card2.png"
+            />
+          </div>
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
+              src="/imagens/card6.png"
+            />
+          </div>
+        </div>
+        <div className="flex justify-center space-x-3">
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
+              src="/imagens/card7.png"
+            />
+          </div>
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
+              src="/imagens/card5.png"
+            />
+          </div>
+          <div>
+            <img
+              className="w-[190px] drop-shadow-md"
               src="/imagens/card.png"
-            />
-          </div>
-          <div>
-            <img
-              className="w-[190px] drop-shadow-md"
-              src="/imagens/card2.png"
-            />
-          </div>
-          <div>
-            <img
-              className="w-[190px] drop-shadow-md"
-              src="/imagens/card2.png"
             />
           </div>
         </div>
       </div>
-      <div className="comoFunciona p-7 text-left w-full space-y-7">
-        <TextComponent type={"sectionTitle"} content={"Entenda como a Domo funciona"} />
-        <div className="bg-lightGray2 border-border border rounded-[33px] max-w-[430px] h-[180px] flex justify-between overflow-hidden">
-          <div className="space-y-3 pt-5 pl-5">
-            <TextComponent type={"h3"} content={"1 - Preencha as informações"} />
-            <TextComponent type={"body"} content={"Busque por serviço, cidade e disponibilidade."} />
+      <div className="comoFunciona p-7 w-full md:flex md:justify-center">
+        <div>
+          <TextComponent type={"sectionTitle"} content={"Entenda como a Domo funciona"} className={"pb-7"} />
+          <div className="flex justify-center">
+            <div className="space-y-7">
+              <div className="card1 bg-lightGray2 border-border border rounded-[37px] max-w-[430px] h-[190px] flex justify-between overflow-hidden">
+                <div className="space-y-3 pt-5 pl-5">
+                  <TextComponent type={"h3"} content={"1 - Conte o que você precisa"} />
+                  <TextComponent type={"body"} content={"Informe o tipo de serviço, sua cidade e quando precisa do atendimento."} />
+                </div>
+                <img src="/imagens/pass1.png" className="object-contain pt-5 pr-4 pl-4" />
+              </div>
+              <div className="card2 bg-lightGray2 border-border border rounded-[37px] max-w-[430px] h-[190px] flex justify-between overflow-hidden">
+                <div className="space-y-3 pt-5 pl-5">
+                  <TextComponent type={"h3"} content={"2 - Escolha o profissional"} />
+                  <TextComponent type={"body"} content={"Compare e selecione o profissional que melhor atende sua necessidade."} />
+                </div>
+                <img src="/imagens/pass1.png" className="object-contain pt-5 pr-4 pl-4" />
+              </div>
+              <div className="card3 bg-lightGray2 border-border border rounded-[37px] max-w-[430px] h-[190px] flex justify-between overflow-hidden">
+                <div className="space-y-3 pt-5 pl-5">
+                  <TextComponent type={"h3"} content={"3 - Serviço realizado"} />
+                  <TextComponent type={"body"} content={"O profissional vai até você e realiza o serviço conforme combinado."} />
+                </div>
+                <img src="/imagens/pass1.png" className="object-contain pt-5 pr-4 pl-4" />
+              </div>
+              <div className="card4 bg-lightGray2 border-border border rounded-[37px] max-w-[430px] h-[190px] flex justify-between overflow-hidden">
+                <div className="space-y-3 pt-5 pl-5">
+                  <TextComponent type={"h3"} content={"4 - Finalize com tranquilidade"} />
+                  <TextComponent type={"body"} content={"Pague diretamente ao profissional após a conclusão do serviço."} />
+                </div>
+                <img src="/imagens/pass1.png" className="object-contain pt-5 pr-4 pl-4" />
+              </div>
+              <div className="flex justify-center">
+                <ButtonComponent type={"primary"} content={"Começar agora"} className={""} />
+              </div>
+            </div>
           </div>
-          <img src="/imagens/pass1.png" className="object-contain pt-5 pr-4 pl-2" />
-        </div>
-        <div className="bg-lightGray2 border-border border rounded-[33px] max-w-[430px] h-[180px] flex justify-between overflow-hidden">
-          <div className="space-y-3 pt-5 pl-5">
-            <TextComponent type={"h3"} content={"2 - Seleção"} />
-            <TextComponent type={"body"} content={"Escolha o profissional que melhor atenda à sua necessidade."} />
-          </div>
-          <img src="/imagens/pass1.png" className="object-contain pt-5 pr-4 pl-2" />
-        </div>
-        <div className="bg-lightGray2 border-border border rounded-[33px] max-w-[430px] h-[180px] flex justify-between overflow-hidden">
-          <div className="space-y-3 pt-5 pl-5">
-            <TextComponent type={"h3"} content={"3 - Finalização"} />
-            <TextComponent type={"body"} content={"O pagamento é feito diretamente ao profissional após o serviço."} />
-          </div>
-          <img src="/imagens/pass1.png" className="object-contain pt-5 pr-4 pl-2" />
-        </div>
-        <div className="flex justify-center">
-          <ButtonComponent type={"primary"} content={"Começar agora"} className={""} />
         </div>
       </div>
       <div className="diferenciais p-7 bg-lightGray2 w-full space-y-5">
@@ -164,7 +198,10 @@ export default function Home() {
       <div className="trabalheConosco p-7 bg-blackBg w-full">
         <TextComponent type={"sectionTitle"} content={"Você é um profissional autônomo ou possui um negócio? Trabalhe conosco!"} className={"text-white"} />
         <TextComponent type={"h3"} content={"Encontre novos clientes, ganhe visibilidade e trabalhe com mais segurança."} className={"text-textSecondaryDark mt-3"} />
-        <ButtonComponent type={"primary"} content={"Entenda melhor"} className={"mt-7"} />
+        <Link href={"/profissionais"}>
+        <ButtonComponent type={"primary"} content={"Entender melhor"} className={"mt-7"} />
+        </Link>
+        
       </div>
       <div className="indique p-7 w-full space-y-5">
         <TextComponent type={"h3"} content={"Conhece um bom profissional?"} className={"text-primary"} />
@@ -173,7 +210,7 @@ export default function Home() {
         <ButtonComponent type={"primary"} content={"Indicar profissional"} />
       </div>
       <div className="perguntas p-7 bg-lightGray2 space-y-5 text-left w-full">
-        <TextComponent type={"h2"} content={"Perguntas"}/>
+        <TextComponent type={"h2"} content={"Perguntas"} />
         <div>
           <TextComponent type={"h3"} content={"A Domo é segura?"} />
           <TextComponent type={"body"} content={"Sim. Trabalhamos com profissionais qualificados, avaliações reais e pagamento protegido."} />
@@ -195,11 +232,17 @@ export default function Home() {
           <TextComponent type={"body"} content={"Você pode avaliar o profissional ou entrar em contato com o nosso suporte."} />
         </div>
       </div>
-      <footer>
-        <TextComponent type={"body"} content={"Domo © 2025"} />
-        <TextComponent type={"body"} content={"Termos de Uso"} />
-        <TextComponent type={"body"} content={"Política de Privacidade"} />
-        <TextComponent type={"body"} content={"Contato"} />
+      <footer className="bg-lightGray2 pb-10 w-full">
+        <div className="flex justify-center">
+          <hr className="border-border w-[90%]" />
+        </div>
+        <div className="p-7 space-y-2">
+          <img src="/imagens/domoIcon.png" className="w-[40px] pb-3" />
+          <TextComponent type={"lead"} content={"© 2025 Domo"} />
+          <TextComponent type={"body"} content={"Termos de Uso"} />
+          <TextComponent type={"body"} content={"Política de Privacidade"} />
+          <TextComponent type={"body"} content={"Contato"} />
+        </div>
       </footer>
     </div>
   );
