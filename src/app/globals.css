@@ -136,7 +136,7 @@ body {
         indicadores informativos e ajuda ao usuário */
      --color-info: #3B82F6;
 
-     --color-buttonSecondary: #D9E3EE;
+     --color-buttonSecondary: #DFE5ED;
 }
 
 .buttonHover:hover {
@@ -144,12 +144,45 @@ body {
   cursor: pointer;
 }
 
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(0.5);
+    opacity: 1.0;
+  }
 }
 
-.animate-gradient {
-  animation: gradient 3s ease infinite;
+.breathe {
+  animation: breathe 2.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes menuIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes menuOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-menuIn {
+  animation: menuIn 0.2s ease-out forwards;
+}
+
+.animate-menuOut {
+  animation: menuOut 0.2s ease-in forwards;
 }

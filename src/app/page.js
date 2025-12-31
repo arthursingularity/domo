@@ -5,19 +5,19 @@ import ButtonComponent from "@/components/ui/ButtonComponent";
 import InputComponent from "@/components/ui/InputComponent";
 import TextComponent from "@/components/ui/TextComponent";
 import { useState } from "react";
+import NavBar from "@/components/layout/NavBar";
 
-export default function Home() {
+export default function Page() {
   const [widthExpanded, setWidthExpanded] = useState(false);
   const [heightExpanded, setHeightExpanded] = useState(false);
   const [showInputs, setShowInputs] = useState(false);
 
   return (
     <div>
+      <NavBar />
       <div className="flex justify-center">
-        <div className="heroSection md:mt-10 flex p-7">
-          <div className="bg-primarySoft w-[525px] h-[525px] hidden md:block">
-          </div>
-          <div className="md:pl-10 space-y-3 md:w-[700px]">
+        <div className="heroSection md:mt-10 flex p-6 space-x-5">
+          <div className="space-y-3 max-w-[500px] md:max-w-[300px] lg:max-w-[400px] md:mt-20">
             <TextComponent type={"h1"} content={"Profissionais certos, na hora certa."} className={"text-left text-[48px]"} />
             <TextComponent type={"body"} content={"Encontre e contrate profissionais de diversas categorias em uma plataforma segura e confiável."} className={"text-left"} />
             <div className="inputsDiv mt-5">
@@ -63,7 +63,7 @@ export default function Home() {
                             content={"Fechar"}
                           />
                         </div>
-                        <ButtonComponent type={"primary"} content={"Pesquisar"} />
+                        <ButtonComponent type={"primary"} content={"Encontrar agora"} />
                       </div>
                     </div>
                   </div>
@@ -71,9 +71,11 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <div className="bg-primarySoft w-[400px] h-[525px] hidden md:block">
+          </div>
         </div>
       </div>
-      <div className="profissionalCards bg-lightGray2 w-full p-7 md:hidden space-y-3">
+      <div className="profissionalCards bg-lightGray2 w-full p-6 md:hidden space-y-3">
         <div className="flex justify-center space-x-3">
           <div>
             <img
@@ -135,7 +137,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="comoFunciona p-7 w-full md:flex md:justify-center">
+      <div className="comoFunciona p-6 w-full md:flex md:justify-center">
         <div>
           <TextComponent type={"sectionTitle"} content={"Entenda como a Domo funciona"} className={"pb-7"} />
           <div className="flex justify-center">
@@ -143,7 +145,7 @@ export default function Home() {
               <div className="card1 bg-lightGray2 border-border border rounded-[37px] max-w-[430px] h-[190px] flex justify-between overflow-hidden">
                 <div className="space-y-3 pt-5 pl-5">
                   <TextComponent type={"h3"} content={"1 - Conte o que você precisa"} />
-                  <TextComponent type={"body"} content={"Informe o tipo de serviço, sua cidade e quando precisa do atendimento."} />
+                  <TextComponent type={"body"} content={"Informe o profissional, sua cidade e quando precisa do atendimento."} />
                 </div>
                 <img src="/imagens/pass1.png" className="object-contain pt-5 pr-4 pl-4" />
               </div>
@@ -175,7 +177,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="diferenciais p-7 bg-lightGray2 w-full space-y-5">
+      <div className="diferenciais p-6 bg-lightGray2 w-full space-y-5">
         <TextComponent type={"h3"} content={"Nossos diferenciais"} className={"text-primary"} />
         <TextComponent type={"sectionTitle"} content={"Por que escolher a Domo?"} />
         <div>
@@ -195,39 +197,39 @@ export default function Home() {
           <TextComponent type={"body"} content={"Ideal para serviços técnicos onde o problema não é claro."} />
         </div>
       </div>
-      <div className="trabalheConosco p-7 bg-blackBg w-full">
+      <div className="trabalheConosco p-6 bg-blackBg w-full">
         <TextComponent type={"sectionTitle"} content={"Você é um profissional autônomo ou possui um negócio? Trabalhe conosco!"} className={"text-white"} />
         <TextComponent type={"h3"} content={"Encontre novos clientes, ganhe visibilidade e trabalhe com mais segurança."} className={"text-textSecondaryDark mt-3"} />
         <Link href={"/profissionais"}>
-        <ButtonComponent type={"primary"} content={"Entender melhor"} className={"mt-7"} />
+          <ButtonComponent type={"primary"} content={"Cadastrar como profissional"} className={"mt-6"} />
         </Link>
-        
+
       </div>
-      <div className="indique p-7 w-full space-y-5">
+      <div className="indique p-6 w-full space-y-5">
         <TextComponent type={"h3"} content={"Conhece um bom profissional?"} className={"text-primary"} />
         <TextComponent type={"sectionTitle"} content={"Indique alguém de confiança e ajude a comunidade a crescer!"} />
-        <TextComponent type={"body"} content={"Ao indicar um profissional para a nossa plataforma, você ajuda"} />
-        <ButtonComponent type={"primary"} content={"Indicar profissional"} />
+        <TextComponent type={"body"} content={"Ao indicar um profissional para a nossa plataforma, você ajuda a gerar novas oportunidades e valorizar o trabalho de quem faz bem."} />
+        <ButtonComponent type={"secondary"} content={"Indicar profissional"} />
       </div>
-      <div className="perguntas p-7 bg-lightGray2 space-y-5 text-left w-full">
+      <div className="perguntas p-6 bg-lightGray2 space-y-5 text-left w-full">
         <TextComponent type={"h2"} content={"Perguntas"} />
-        <div>
+        <div className="space-y-1.5">
           <TextComponent type={"h3"} content={"A Domo é segura?"} />
           <TextComponent type={"body"} content={"Sim. Trabalhamos com profissionais qualificados, avaliações reais e pagamento protegido."} />
         </div>
-        <div>
+        <div className="space-y-1.5">
           <TextComponent type={"h3"} content={"Os profissionais são verificados?"} />
           <TextComponent type={"body"} content={"Sim. Os profissionais passam por um processo de verificação para aumentar a segurança."} />
         </div>
-        <div>
+        <div className="space-y-1.5">
           <TextComponent type={"h3"} content={"Como funciona o pagamento?"} />
           <TextComponent type={"body"} content={"O pagamento funciona diretamente entre o cliente e o profissional, sem qualquer interferência da plataforma."} />
         </div>
-        <div>
+        <div className="space-y-1.5">
           <TextComponent type={"h3"} content={"Tenha uma empresa, posso contratar mesmo assim?"} />
           <TextComponent type={"body"} content={"Sim. A Domo possui profissionais que atendem residências, empresas e eventos."} />
         </div>
-        <div>
+        <div className="space-y-1.5">
           <TextComponent type={"h3"} content={"E se eu não gostar do serviço?"} />
           <TextComponent type={"body"} content={"Você pode avaliar o profissional ou entrar em contato com o nosso suporte."} />
         </div>
@@ -236,8 +238,8 @@ export default function Home() {
         <div className="flex justify-center">
           <hr className="border-border w-[90%]" />
         </div>
-        <div className="p-7 space-y-2">
-          <img src="/imagens/domoIcon.png" className="w-[40px] pb-3" />
+        <div className="p-6 space-y-2">
+          <img src="/imagens/domoIcon.png" className="w-[30px] pb-3" />
           <TextComponent type={"lead"} content={"© 2025 Domo"} />
           <TextComponent type={"body"} content={"Termos de Uso"} />
           <TextComponent type={"body"} content={"Política de Privacidade"} />

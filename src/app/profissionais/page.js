@@ -1,7 +1,9 @@
+import ProfissionaisClient from "./ProfissionaisClient";
+
+export const metadata = {
+  title: "Domo | Para profissionais",
+};
+
 export default function Profissionais() {
-    return (
-        <div>
-            <p>Página de profissionais</p>
-        </div>
-    )
+  return <ProfissionaisClient />
 }
