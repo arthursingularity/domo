@@ -1,7 +1,7 @@
 import EntrarClient from "./EntrarClient";
 
 export const metadata = {
-    title: "Entrar",
+    title: "Entrar | Domo",
 };
 
 export default function Entrar() {

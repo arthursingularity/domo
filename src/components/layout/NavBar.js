@@ -51,7 +51,7 @@ export default function NavBar() {
                             <img
                                 src="/imagens/logoVerde.png"
                                 alt="Logo Domo"
-                                className="w-[80px] buttonHover cursor-pointer"
+                                className="w-[90px] buttonHover cursor-pointer"
                             />
                         </Link>
                         <Link href="/como-funciona" className="hidden lg:block">
@@ -74,11 +74,13 @@ export default function NavBar() {
                                 className="hidden md:block"
                             />
                         </div>
-                        <ButtonComponent
-                            content="Começar"
-                            type="primary"
-                            className="ml-4"
-                        />
+                        <div onClick={() => handleNavigate("/cadastrar")}>
+                            <ButtonComponent
+                                content="Começar"
+                                type="primary"
+                                className="ml-4"
+                            />
+                        </div>
                         <img
                             src="/imagens/menuIcon.svg"
                             className="w-[35px] buttonHover lg:hidden ml-4"
@@ -142,20 +144,23 @@ export default function NavBar() {
                         </button>
                         <hr className="border-border" />
                         <div className="flex justify-between">
-                            <div onClick={() => handleNavigate("/entrar")}>
+                            <Link href={"/entrar"}>
                                 <ButtonComponent
                                     content="Entrar"
                                     type="secondary"
                                 />
-                            </div>
-                            <ButtonComponent
-                                content="Cadastrar"
-                                type="primary"
-                            />
+                            </Link>
+                            <Link href={"/cadastrar"}>
+                                <ButtonComponent
+                                    content="Cadastrar"
+                                    type="primary"
+                                />
+                            </Link>
                         </div>
                     </div>
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 }

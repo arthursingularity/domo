@@ -12,7 +12,7 @@ export default function NotFound() {
     return (
         <div>
             <NavBar/>
-            <div className="min-h-screen flex flex-col text-left text-center p-6 space-y-3">
+            <div className="min-h-screen flex flex-col text-left text-center p-6 space-y-3 pt-[90px]">
                 <TextComponent type={"h1"} content={"Página não encontrada."}/>
                 <TextComponent type={"body"} content={"A página que você tentou acessar não existe."}/>
                 <Link href="/">

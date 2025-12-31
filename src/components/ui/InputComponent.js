@@ -1,9 +1,10 @@
-export default function InputComponent({ type, placeholder, className }) {
+export default function InputComponent({ type, placeholder, className, onChange }) {
     return (
         <div>
             <input
                 type={type}
                 placeholder={placeholder}
+                onChange={onChange}
                 className={`
                 font-light
                 rounded-full
@@ -11,13 +12,16 @@ export default function InputComponent({ type, placeholder, className }) {
                 text-[16px]
                 caret-primary
                 w-full
-                bg-lightGray
+                bg-background
                 text-textPrimary
+                border
+                border-border
+                hover:border-primary
 
                 placeholder:font-light
                 placeholder:text-[15px]
                 placeholder:text-textSecondary
-                placeholder:opacity-70
+                placeholder:opacity-80
 
                 outline-none
                 appearance-none
