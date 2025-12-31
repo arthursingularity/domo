@@ -3,7 +3,7 @@ import NavBar from "@/components/layout/NavBar"
 
 export const metadata = {
   title: {
-    default: "Conectando você aos melhores profissionais | Domo"
+    default: "Domo | Conectando você aos melhores profissionais"
   },
   description: "Encontre e contrate profissionais com segurança",
 };
