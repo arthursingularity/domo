@@ -27,14 +27,15 @@ export default function CadastrarClient() {
                             <label className="font-medium">E-mail</label>
                             <InputComponent
                                 type="text"
+                                size={"big"}
                                 placeholder="Seu melhor e-mail"
-                                className="mt-1"
+                                className="mt-1 border-border w-full"
                                 onChange={(e) => {
                                     e.target.value = e.target.value.toLowerCase();
                                 }}
                             />
                         </div>
-                        <ButtonComponent type={"primary"} content={"Continuar"} className={"w-full mt-4"} />
+                        <ButtonComponent type={"primary"} content={"Continuar"} size={"big"} className={"w-full mt-4"} />
                     </form>
                     <div className="flex items-center">
                         <hr className="border-border w-full" />
@@ -45,10 +46,12 @@ export default function CadastrarClient() {
                         <img src="/imagens/googleIcon.svg" className="w-[18px]" />
                         <p className="font-medium text-[15px] md:text-[16px] leading-[1.6] text-textSecondary py-3 text-center">Registre-se com o Google</p>
                     </div>
-                    <Link href={"/entrar"} className="flex justify-center mt-7">
+                    <div className="flex justify-center mt-7">
                         <TextComponent type={"body"} content={"Já possui uma conta?"} />
-                        <p className="font-medium text-[15px] md:text-[16px] leading-[1.6] text-primary ml-1">Entrar</p>
-                    </Link>
+                        <Link href={"/entrar"}>
+                            <p className="font-medium text-primary ml-1 buttonHover">Entrar</p>
+                        </Link>
+                    </div>
                     <p className="text-[12px] font-regular text-textTertiary mt-6">
                         Ao criar uma conta, você concorda que está de acordo com os{" "}
                         <Link

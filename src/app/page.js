@@ -39,20 +39,20 @@ export default function Page() {
                     setWidthExpanded(false);
                   }
                 }}
-                className={`bg-primary text-white font-semibold text-[15px] p-2 space-y-3 transition-all ease-in-out duration-300 rounded-[41px]
+                className={`bg-primary text-white font-semibold text-[15px] p-3 space-y-3 transition-all ease-in-out duration-300 rounded-[41px]
                             ${widthExpanded ? "md:w-[400px] w-full" : "w-[280px] buttonHover"}
-                            ${heightExpanded ? "h-[290px]" : "h-[50px]"}
+                            ${heightExpanded ? "h-[301px]" : "h-[50px]"}
                           `}
               >
-                <p className="transition-opacity duration-200 mt-[6px] text-center">
+                <p className="transition-opacity duration-200 mt-[2px] text-center">
                   {widthExpanded ? "O que você precisa?" : "Encontrar profissional"}
                 </p>
                 {showInputs && (
                   <div className={`bg-white p-3 rounded-[33px]`}>
                     <div className="space-y-3">
-                      <InputComponent type={"text"} placeholder={"Profissional"} />
-                      <InputComponent type={"text"} placeholder={"Cidade"} />
-                      <InputComponent type={"text"} placeholder={"Quando"} />
+                      <InputComponent type={"text"} placeholder={"Profissional"} size={"medium"} className={"border-border w-full"} />
+                      <InputComponent type={"text"} placeholder={"Cidade"} size={"medium"} className={"border-border w-full"} />
+                      <InputComponent type={"text"} placeholder={"Quando"} size={"medium"} className={"border-border w-full"} />
                       <div className="flex justify-between">
                         <div
                           onClick={(e) => {
@@ -64,9 +64,14 @@ export default function Page() {
                           <ButtonComponent
                             type={"secondary"}
                             content={"Fechar"}
+                            size={"medium"}
                           />
                         </div>
-                        <ButtonComponent type={"primary"} content={"Encontrar agora"} />
+                        <ButtonComponent
+                          type={"primary"}
+                          content={"Encontrar agora"}
+                          size={"medium"}
+                        />
                       </div>
                     </div>
                   </div>
@@ -90,7 +95,7 @@ export default function Page() {
             className={"mt-2"}
           />
         </div>
-        
+
         <div className="flex justify-center space-x-3">
           <div>
             <img
@@ -165,7 +170,6 @@ export default function Page() {
             <TextComponent type="body" content="Estética Automotiva" className={categoryClass} />
           </div>
         </div>
-        <hr className="border-border" />
       </div>
       <div className="comoFunciona p-6 w-full md:flex md:justify-center">
         <div className="max-w-[1300px]">
@@ -202,46 +206,46 @@ export default function Page() {
               </div>
             </div>
             <div className="flex justify-center">
-              <ButtonComponent type={"primary"} content={"Começar agora"} className={""} />
+              <ButtonComponent type={"primary"} content={"Começar agora"} size={"medium"} />
             </div>
           </div>
         </div>
       </div>
-      <div className="diferenciais p-6 bg-lightGray2 w-full flex justify-center">
+      <div className="diferenciais p-6 py-10 bg-lightGray2 w-full flex justify-center">
         <div className="space-y-5">
           <TextComponent type={"h3"} content={"Nossos diferenciais"} className={"text-primary"} />
           <TextComponent type={"sectionTitle"} content={"Por que escolher a Domo?"} />
-          <div>
+          <div className="space-y-2">
             <TextComponent type={"h3"} content={"Profissionais verificados"} />
             <TextComponent type={"body"} content={"Identidade validada para mais segurança na contratação."} />
           </div>
-          <div>
+          <div className="space-y-2">
             <TextComponent type={"h3"} content={"Avaliações reais"} />
             <TextComponent type={"body"} content={"Apenas clientes que contrataram podem avaliar."} />
           </div>
-          <div>
-            <TextComponent type={"h3"} content={"Pagamento liberado"} />
+          <div className="space-y-2">
+            <TextComponent type={"h3"} content={"Pagamento seguro"} />
             <TextComponent type={"body"} content={"O pagamento é diretamente entre você e o profissional."} />
           </div>
-          <div>
+          <div className="space-y-2">
             <TextComponent type={"h3"} content={"Diagnóstico justo"} />
-            <TextComponent type={"body"} content={"Ideal para serviços técnicos onde o problema não é claro."} />
+            <TextComponent type={"body"} content={"Ideal para serviços onde o problema não é claro."} />
           </div>
         </div>
       </div>
-      <div className="trabalheConosco p-6 bg-blackBg w-full">
+      <div className="trabalheConosco p-6 py-10 bg-blackBg w-full">
         <TextComponent type={"sectionTitle"} content={"Você é um profissional autônomo ou possui um negócio? Trabalhe conosco!"} className={"text-white"} />
         <TextComponent type={"lead"} content={"Encontre novos clientes, ganhe visibilidade e trabalhe com mais segurança."} className={"text-textSecondaryDark mt-3"} />
         <Link href={"/profissionais"}>
-          <ButtonComponent type={"primary"} content={"Cadastrar como profissional"} className={"mt-6"} />
+          <ButtonComponent type={"primary"} content={"Cadastrar como profissional"} size={"medium"} className={"mt-6"} />
         </Link>
 
       </div>
-      <div className="indique p-6 w-full space-y-5">
+      <div className="indique p-6 py-10 w-full space-y-5">
         <TextComponent type={"h3"} content={"Conhece um bom profissional?"} className={"text-primary"} />
         <TextComponent type={"sectionTitle"} content={"Indique alguém de confiança e ajude a comunidade a crescer!"} />
         <TextComponent type={"body"} content={"Ao indicar um profissional para a nossa plataforma, você ajuda a gerar novas oportunidades e valorizar o trabalho de quem faz bem."} />
-        <ButtonComponent type={"secondary"} content={"Indicar profissional"} />
+        <ButtonComponent type={"secondary"} content={"Indicar profissional"} size={"medium"} />
       </div>
       <div className="perguntas p-6 bg-lightGray2 space-y-5 text-left w-full">
         <TextComponent type={"h2"} content={"Perguntas"} />

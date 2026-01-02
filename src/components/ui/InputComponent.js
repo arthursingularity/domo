@@ -1,4 +1,10 @@
-export default function InputComponent({ type, placeholder, className, onChange }) {
+export default function InputComponent({ type, placeholder, className, onChange, size }) {
+    const inputVariants = {
+        small: "h-[40px]",
+        medium: "h-[45px]",
+        big: "h-[50px]",
+    }
+
     return (
         <div>
             <input
@@ -8,14 +14,12 @@ export default function InputComponent({ type, placeholder, className, onChange 
                 className={`
                 font-light
                 rounded-full
-                py-2 px-4
+                px-4
                 text-[16px]
                 caret-primary
-                w-full
                 bg-background
                 text-textPrimary
                 border
-                border-border
                 hover:border-primary
 
                 placeholder:font-light
@@ -30,6 +34,7 @@ export default function InputComponent({ type, placeholder, className, onChange 
                 focus:ring-primary/40
                 focus:ring-offset-0
 
+                ${inputVariants[size]}
                 ${className}
             `}
             />

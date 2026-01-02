@@ -4,12 +4,53 @@ import Link from "next/link";
 import ButtonComponent from "../ui/ButtonComponent";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import TextComponent from "../ui/TextComponent";
 
 export default function NavBar() {
     const pathname = usePathname();
     const router = useRouter();
+    const [user, setUser] = useState(null)
+    const [isLogged, setIsLogged] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false);
     const [closing, setClosing] = useState(false);
+
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const res = await fetch("/api/auth/me", {
+                    credentials: "include",
+                })
+
+                const data = await res.json()
+
+                if (data.authenticated) {
+                    setIsLogged(true)
+                    setUser(data.user)
+                } else {
+                    setIsLogged(false)
+                    setUser(null)
+                }
+            } catch {
+                setIsLogged(false)
+                setUser(null)
+            }
+        }
+
+        checkAuth()
+    }, [])
+
+    const handleLogout = async () => {
+        try {
+            await fetch("/api/auth/logout", {
+                method: "POST",
+            })
+
+            setIsLogged(false)
+            router.push("/entrar")
+        } catch (err) {
+            console.error("Erro ao sair:", err)
+        }
+    }
 
     useEffect(() => {
         if (menuOpen) {
@@ -54,33 +95,61 @@ export default function NavBar() {
                                 className="w-[90px] buttonHover cursor-pointer"
                             />
                         </Link>
-                        <Link href="/como-funciona" className="hidden lg:block">
-                            <p className="font-medium hover:text-primary">Como funciona</p>
+                        <Link href="/" className="hidden lg:block">
+                            <p className={`font-regular hover:text-primary ${pathname === "/" ? "text-primary" : ""}`}>
+                                Início
+                            </p>
                         </Link>
-
+                        <Link href="/sistema" className="hidden lg:block">
+                            <p className={`font-regular hover:text-primary ${pathname === "/sistema" ? "text-primary" : ""}`}>
+                                Sistema
+                            </p>
+                        </Link>
+                        <Link href="/comofunciona" className="hidden lg:block">
+                            <p className={`font-regular hover:text-primary ${pathname === "/comofunciona" ? "text-primary" : ""}`}>
+                                Como funciona
+                            </p>
+                        </Link>
                         <Link href="/profissionais" className="hidden lg:block">
-                            <p className="font-medium hover:text-primary">Profissionais</p>
+                            <p className={`font-regular hover:text-primary ${pathname === "/profissionais" ? "text-primary" : ""}`}>
+                                Profissionais
+                            </p>
                         </Link>
-
                         <Link href="/empresas" className="hidden lg:block">
-                            <p className="font-medium hover:text-primary">Empresas</p>
+                            <p className={`font-regular hover:text-primary ${pathname === "/empresas" ? "text-primary" : ""}`}>
+                                Empresas
+                            </p>
                         </Link>
+                        {isLogged && (
+                            <button
+                                onClick={handleLogout}
+                                className="font-medium hover:text-red-500 cursor-pointer"
+                            >
+                                Sair
+                            </button>
+                        )}
                     </div>
                     <div className="flex items-center">
-                        <div onClick={() => handleNavigate("/entrar")}>
-                            <ButtonComponent
-                                content="Entrar"
-                                type="secondary"
-                                className="hidden md:block"
-                            />
-                        </div>
-                        <div onClick={() => handleNavigate("/cadastrar")}>
-                            <ButtonComponent
-                                content="Começar"
-                                type="primary"
-                                className="ml-4"
-                            />
-                        </div>
+                        {!isLogged && (
+                            <>
+                                <div onClick={() => handleNavigate("/entrar")}>
+                                    <ButtonComponent
+                                        content="Entrar"
+                                        type="secondary"
+                                        size={"medium"}
+                                        className="hidden md:block"
+                                    />
+                                </div>
+                                <div onClick={() => handleNavigate("/cadastrar")}>
+                                    <ButtonComponent
+                                        content="Começar"
+                                        type="primary"
+                                        size={"medium"}
+                                        className="ml-4"
+                                    />
+                                </div>
+                            </>
+                        )}
                         <img
                             src="/imagens/menuIcon.svg"
                             className="w-[35px] buttonHover lg:hidden ml-4"
@@ -96,7 +165,7 @@ export default function NavBar() {
                             <img
                                 src="/imagens/logoVerde.png"
                                 alt="Logo Domo"
-                                className="w-[80px] buttonHover"
+                                className="w-[90px] buttonHover"
                                 onClick={() => setMenuOpen(false)}
                             />
                         </Link>
@@ -159,8 +228,7 @@ export default function NavBar() {
                         </div>
                     </div>
                 </div>
-            )
-            }
+            )}
         </div >
     );
 }

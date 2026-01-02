@@ -1,0 +1,170 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  CLIENT
+  PROFESSIONAL
+  ADMIN
+}
+
+enum ServiceStatus {
+  OPEN
+  ACCEPTED
+  IN_PROGRESS
+  COMPLETED
+  CONFIRMED
+  CANCELED
+  DISPUTED
+}
+
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  cpf           String   @unique
+  passwordHash  String?
+  name          String
+  phone         String?
+  role          UserRole @default(CLIENT)
+
+  isVerified    Boolean  @default(false)
+  isActive      Boolean  @default(true)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  professionalProfile ProfessionalProfile?
+
+  clientServices ServiceRequest[] @relation("ClientServices")
+  reviews        Review[]
+}
+
+model ProfessionalProfile {
+  id              String @id @default(uuid())
+
+  userId          String @unique
+  user            User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  professionalName String // nome artístico / nome do negócio
+  bio              String?
+  city             String
+  state            String
+
+  diagnosisPrice   Float?
+  rating           Float   @default(0)
+  totalServices    Int     @default(0)
+
+  isApproved       Boolean @default(false)
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  categories     ProfessionalCategory[]
+  availability   Availability[]
+  blocks         ScheduleBlock[]
+  services       ServiceRequest[]
+  reviews        Review[]
+}
+
+model Category {
+  id        String @id @default(uuid())
+  name      String
+  slug      String @unique
+  isActive  Boolean @default(true)
+
+  professionals ProfessionalCategory[]
+  services      ServiceRequest[]
+}
+
+model ProfessionalCategory {
+  id              String @id @default(uuid())
+  professionalId  String
+  categoryId      String
+
+  professional ProfessionalProfile @relation(fields: [professionalId], references: [id], onDelete: Cascade)
+  category     Category             @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([professionalId, categoryId])
+}
+
+model Availability {
+  id              String @id @default(uuid())
+  professionalId  String
+
+  dayOfWeek Int // 0 = domingo, 6 = sábado
+  startTime String // "08:00"
+  endTime   String // "18:00"
+
+  professional ProfessionalProfile @relation(fields: [professionalId], references: [id], onDelete: Cascade)
+
+  @@unique([professionalId, dayOfWeek])
+}
+
+model ScheduleBlock {
+  id              String   @id @default(uuid())
+  professionalId  String
+  startDate       DateTime
+  endDate         DateTime
+  reason          String?
+
+  professional ProfessionalProfile @relation(fields: [professionalId], references: [id], onDelete: Cascade)
+}
+
+model ServiceRequest {
+  id              String @id @default(uuid())
+
+  clientId        String
+  professionalId  String
+  categoryId      String
+
+  scheduledAt     DateTime?
+  address         String
+  city            String
+  description     String
+
+  status          ServiceStatus @default(OPEN)
+  diagnosisPrice  Float?
+  finalPrice      Float?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  client        User                @relation("ClientServices", fields: [clientId], references: [id])
+  professional  ProfessionalProfile @relation(fields: [professionalId], references: [id])
+  category      Category            @relation(fields: [categoryId], references: [id])
+
+  items         ServiceItem[]
+  review        Review?
+}
+
+model ServiceItem {
+  id          String @id @default(uuid())
+  serviceId   String
+
+  name        String
+  price       Float
+  isDiagnosis Boolean @default(false)
+
+  service ServiceRequest @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+}
+
+model Review {
+  id              String @id @default(uuid())
+  serviceId       String @unique
+  clientId        String
+  professionalId  String
+
+  rating          Int // 1 a 5
+  comment         String?
+
+  createdAt       DateTime @default(now())
+
+  service        ServiceRequest      @relation(fields: [serviceId], references: [id])
+  client         User                @relation(fields: [clientId], references: [id])
+  professional   ProfessionalProfile @relation(fields: [professionalId], references: [id])
+}
