@@ -104,12 +104,12 @@ body {
       --color-textSecondaryDark: #CBD5E1; /* cinza claro, leitura fluida */
       --color-textTertiaryDark: #94A3B8;
 
-      --color-iconGrayColor: #A3A3A3;
+      --color-iconGrayColor: #6D6D6D;
    
     /* Cor de bordas e divisores
         Uso: bordas de cards, inputs, tabelas,
         separadores visuais e outlines neutros */
-     --color-border: #CBD5E1;
+     --color-border: #D1D5DB;
      --color-lightGray: #E7E9EB;
      --color-lightGray2: #EEF0F3;
 

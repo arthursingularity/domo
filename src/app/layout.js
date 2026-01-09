@@ -1,5 +1,4 @@
 import "./globals.css";
-import NavBar from "@/components/layout/NavBar"
 
 export const metadata = {
   title: {

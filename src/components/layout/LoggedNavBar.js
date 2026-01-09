@@ -1,34 +1,27 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import ButtonComponent from "../ui/ButtonComponent";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import TextComponent from "../ui/TextComponent";
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import TextComponent from "../ui/TextComponent"
 
 export default function LoggedNavBar() {
-    const pathname = usePathname();
-    const router = useRouter();
+    const pathname = usePathname()
+    const router = useRouter()
+
     const [user, setUser] = useState(null)
     const [isLogged, setIsLogged] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
+    const [activeNav, setActiveNav] = useState(null)
 
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const res = await fetch("/api/auth/me", {
-                    credentials: "include",
-                })
-
+                const res = await fetch("/api/auth/me", { credentials: "include" })
                 const data = await res.json()
 
-                if (data.authenticated) {
-                    setIsLogged(true)
-                    setUser(data.user)
-                } else {
-                    setIsLogged(false)
-                    setUser(null)
-                }
+                setIsLogged(!!data.authenticated)
+                setUser(data.authenticated ? data.user : null)
             } catch {
                 setIsLogged(false)
                 setUser(null)
@@ -40,16 +33,20 @@ export default function LoggedNavBar() {
 
     const handleLogout = async () => {
         try {
-            await fetch("/api/auth/logout", {
-                method: "POST",
-            })
-
+            await fetch("/api/auth/logout", { method: "POST" })
             setIsLogged(false)
             router.push("/entrar")
         } catch (err) {
             console.error("Erro ao sair:", err)
         }
     }
+
+    const handleHoverStart = (id) => setActiveNav(id)
+    const handleHoverEnd = () => setActiveNav(null)
+
+
+    const isActive = (path, id) =>
+        pathname === path || activeNav === id
 
     return (
         <div>
@@ -63,22 +60,20 @@ export default function LoggedNavBar() {
                                 className="w-[90px] buttonHover cursor-pointer"
                             />
                         </Link>
-                        <p></p>
-                        <Link href="/" className="hidden md:block">
-                            <p className={`font-regular hover:text-primary ${pathname === "/sistema" ? "text-primary" : ""}`}>
-                                Início
-                            </p>
-                        </Link>
-                        <Link href="/buscar" className="hidden md:block">
-                            <p className={`font-regular hover:text-primary ${pathname === "/buscar" ? "text-primary" : ""}`}>
-                                Buscar
-                            </p>
-                        </Link>
-                        <Link href="/chamados" className="hidden md:block">
-                            <p className={`font-regular hover:text-primary ${pathname === "/chamados" ? "text-primary" : ""}`}>
-                                Chamados
-                            </p>
-                        </Link>
+                        {[
+                            { href: "/", label: "Início", path: "/sistema" },
+                            { href: "/buscar", label: "Buscar", path: "/buscar" },
+                            { href: "/chamados", label: "Chamados", path: "/chamados" },
+                        ].map(({ href, label, path }) => (
+                            <Link key={label} href={href} className="hidden md:block">
+                                <p
+                                    className={`font-regular hover:text-primary ${pathname === path ? "text-primary" : ""
+                                        }`}
+                                >
+                                    {label}
+                                </p>
+                            </Link>
+                        ))}
                         {isLogged && (
                             <button
                                 onClick={handleLogout}
@@ -88,77 +83,78 @@ export default function LoggedNavBar() {
                             </button>
                         )}
                     </div>
-                    <div className="flex items-center">
-                        <div className="flex justify-center items-center">
-                            <div className="flex flex-col items-center space-y-1">
-                                <img
-                                    src={isHovered ? "/imagens/notificationIconPrimary.svg" : "/imagens/notificationIcon.svg"}
-                                    className="w-[25px] cursor-pointer"
-                                    onMouseEnter={() => setIsHovered(true)}
-                                    onMouseLeave={() => setIsHovered(false)}
-                                />
-                            </div>
-                        </div>
-                    </div>
+                    <img
+                        src={
+                            isHovered
+                                ? "/imagens/notificationIconPrimary.svg"
+                                : "/imagens/notificationIcon.svg"
+                        }
+                        className="w-[25px] cursor-pointer"
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                    />
                 </div>
             </div>
-            <div className="bottomNavBar backdrop-blur-md bg-white/80 w-[90%] sm:w-[370px] rounded-full h-[70px] p-2 flex justify-between items-center fixed bottom-4 left-1/2 -translate-x-1/2 z-40 border border-border md:hidden shadow-lg">
-                <Link href={"/sistema"} className={`w-[85px] h-[53px] flex justify-center items-center rounded-full hover:bg-primary ${pathname === "/sistema" ? "border border-primary" : ""}`}>
-                    <div className="flex flex-col items-center space-y-1">
-                        <img
-                            src={`${pathname === "/sistema" ? "/imagens/homeIconPrimary.svg" : "/imagens/homeIcon.svg"}`}
-                            className={"w-[30px]"}
-                        />
-                        <TextComponent type={"label"} content={"Início"} className={`${pathname === "/sistema" ? "text-primary" : "text-textTertiary"}`} />
-                    </div>
-                </Link>
-                <Link href={"/buscar"} className="w-[85px] flex justify-center items-center rounded-full">
-                    <div className="flex flex-col items-center space-y-1">
-                        <img
-                            src={`${pathname === "/buscar" ? "/imagens/searchIconPrimary.svg" : "/imagens/searchIcon.svg"}`}
-                            className={`w-[30px]`}
-                        />
-                        <TextComponent type={"label"} content={"Buscar"} className={`${pathname === "/buscar" ? "text-primary" : "text-textTertiary"}`} />
-                    </div>
-                </Link>
-                <Link href={"/chamados"} className="w-[85px] flex justify-center items-center rounded-full">
-                    <div className="flex flex-col items-center space-y-1">
-                        <img
-                            src={`${pathname === "/chamados" ? "/imagens/callIconPrimary.svg" : "/imagens/callIcon.svg"}`}
-                            className={`w-[30px]`}
-                        />
-                        <TextComponent type={"label"} content={"Chamados"} className={`${pathname === "/chamados" ? "text-primary" : "text-textTertiary"}`} />
-                    </div>
-                </Link>
-                <Link href={"/chamados"} className="w-[85px] flex justify-center items-center rounded-full">
-                    <div className="flex flex-col items-center space-y-1">
-                        <img
-                            src={`${pathname === "/financeiro" ? "/imagens/financeIconPrimary.svg" : "/imagens/financeIcon.svg"}`}
-                            className={`w-[30px]`}
-                        />
-                        <TextComponent type={"label"} content={"Financeiro"} className={`${pathname === "/financeiro" ? "text-primary" : "text-textTertiary"}`} />
-                    </div>
-                </Link>
-                <Link href={"/chamados"} className="w-[85px] flex justify-center items-center rounded-full">
-                    <div className="flex flex-col items-center space-y-1">
-                        <img
-                            src={`${pathname === "/financeiro" ? "/imagens/adminIconPrimary.svg" : "/imagens/adminIcon.svg"}`}
-                            className={`w-[30px]`}
-                        />
-                        <TextComponent type={"label"} content={"Admin"} className={`${pathname === "/financeiro" ? "text-primary" : "text-textTertiary"}`} />
-                    </div>
-                </Link>
-                <Link href={"/perfil"} className="w-[85px] flex justify-center items-center rounded-full">
+            <div className="bottomNavBar backdrop-blur-md bg-white/70 w-[90%] sm:w-[370px] px-[5px] rounded-full h-[70px] flex justify-between items-center fixed bottom-4 left-1/2 -translate-x-1/2 z-40 border border-border md:hidden shadow-lg">
+                {[
+                    { id: "inicio", path: "/sistema", label: "Início", icon: "home" },
+                    { id: "buscar", path: "/buscar", label: "Buscar", icon: "search" },
+                    { id: "chamados", path: "/chamados", label: "Chamados", icon: "call" },
+                    { id: "financeiro", path: "/financeiro", label: "Financeiro", icon: "finance" },
+                ].map(({ id, path, label, icon }) => (
+                    <Link
+                        key={id}
+                        href={path}
+                        className={`
+                            w-[85px] h-[57px] flex justify-center items-center rounded-full
+                            transition-colors duration-150
+                            ${activeNav === id ? "bg-primary" : ""}
+                            ${pathname === path ? "border border-primary" : ""}
+                        `}
+                        onPointerEnter={() => handleHoverStart(id)}
+                        onPointerLeave={handleHoverEnd}
+                    >
+                        <div className="flex flex-col items-center space-y-[2px]">
+                            <img
+                                src={
+                                    isActive(path, id)
+                                        ? `/imagens/${icon}IconPrimary.svg`
+                                        : `/imagens/${icon}Icon.svg`
+                                }
+                                className="w-[30px]"
+                            />
+                            <TextComponent
+                                type="label"
+                                content={label}
+                                className={
+                                    isActive(path, id)
+                                        ? "text-primary"
+                                        : "text-iconGrayColor"
+                                }
+                            />
+                        </div>
+                    </Link>
+
+                ))}
+                <Link href="/perfil" className="w-[85px] flex justify-center items-center rounded-full">
                     <div className="flex flex-col items-center space-y-1">
                         {!isLogged && (
-                            <div className="rounded-full bg-iconGrayColor overflow-hidden text-white w-[30px] h-[30px] text-[18px] font-medium flex justify-center items-center buttonHover">
+                            <div className="rounded-full bg-iconGrayColor overflow-hidden w-[30px] h-[30px] flex justify-center items-center buttonHover">
                                 <img src="/imagens/profilePic.png" />
                             </div>
                         )}
-                        <TextComponent type={"label"} content={"Perfil"} className={`${pathname === "/perfil" ? "text-primary" : "text-textTertiary"}`} />
+                        <TextComponent
+                            type="label"
+                            content="Perfil"
+                            className={
+                                pathname === "/perfil"
+                                    ? "text-primary"
+                                    : "text-iconGrayColor"
+                            }
+                        />
                     </div>
                 </Link>
             </div>
-        </div >
-    );
+        </div>
+    )
 }
